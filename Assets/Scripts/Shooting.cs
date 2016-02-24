@@ -14,7 +14,7 @@ public class Shooting : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	    if (Input.GetButtonDown("Fire1"))
         {
             GameObject lineOfFire = new GameObject();
@@ -26,7 +26,7 @@ public class Shooting : MonoBehaviour {
             Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * maxDist);
             // perform raycast-based shot
             RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDist, LayerMask.NameToLayer("Default")))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDist))
             {
                 Vector3 hitPoint = hit.point;
                 lofLine.SetPosition(1, hitPoint);
